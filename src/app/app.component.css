@@ -1,0 +1,28 @@
+.container2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    color: white;
+    font-size: 120%;
+}
+
+mat-toolbar {
+    background-color: #0089D7;
+}
+
+footer {
+    flex: 1;
+    display: block;
+    padding-bottom: 2%;
+}
+
+.footer {
+    margin-top: 2%;
+    display: block;
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+<div>
+    <mat-card class="container todo">
+        <mat-card-title>TO DO</mat-card-title>
+    </mat-card>
+    <div>
+        <mat-card class="container" *ngFor="let todo of todos">
+            <mat-card-title>
+                {{ todo.title }}
+            </mat-card-title>
+            <mat-card-content>
+                {{ todo.description }}
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="warn">Excluir</button>
+                <button mat-raised-button class="btn-edit">Editar</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
