@@ -1,0 +1,11 @@
+mat-toolbar {
+    background-color: #0089D7;
+}
+
+.title {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    color: white;
+    font-size: 120%;
+}

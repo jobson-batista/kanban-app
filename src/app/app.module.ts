@@ -9,14 +9,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { TodoModule } from './todo/todo.module';
 import { DoingModule } from './doing/doing.module';
 import { DoneModule } from './done/done.module';
-import { CardEditComponent } from './card-edit/card-edit.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarModule } from './nav-bar/nav-bar.module';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CardEditComponent,
-    NavBarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +24,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     MatIconModule,
     TodoModule,
     DoingModule,
-    DoneModule
+    DoneModule,
+    NavBarModule,
+    NgxSmartModalModule.forChild(),
   ],
   providers: [],
   bootstrap: [AppComponent]

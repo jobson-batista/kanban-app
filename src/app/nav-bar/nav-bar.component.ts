@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public modalService: NgxSmartModalService) { }
 
   ngOnInit(): void {
   }
 
+  createCard() {
+    this.modalService.getModal("cardModal").open();
+  }
 }
