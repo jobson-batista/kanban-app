@@ -34,3 +34,14 @@ textarea {
     margin-bottom: 3%;
     margin-top: 3%;
 }
+
+.select {
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid #0089D7;
+    border-radius: 0.5rem;
+}
+
+.lblStatus {
+    margin-bottom: 2%;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from '../model/card';
 import { DoneService } from './done.service';
 
 @Component({
@@ -8,12 +9,25 @@ import { DoneService } from './done.service';
 })
 export class DoneComponent implements OnInit {
 
-  dones = [];
+  dones: Card[];
 
-  constructor(private doneService: DoneService) { }
+  constructor(private doneService: DoneService) {
+  }
 
   ngOnInit(): void {
-    this.dones = this.doneService.getDones();
+    this.getCardsDones();
+  }
+
+  getCardsDones() {
+    this.doneService.getDones().subscribe( (cards: Card[] ) => {
+      this.dones = cards;
+    });
+  }
+
+  removeCard(card: Card){
+   this.doneService.deleteDone(card).subscribe( done => {
+     this.getCardsDones();
+   });
   }
 
 }

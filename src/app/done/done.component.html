@@ -11,7 +11,7 @@
                 {{ done.description }}
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="warn">Excluir</button>
+                <button mat-raised-button (click)="removeCard(done)" color="warn">Excluir</button>
                 <button mat-raised-button class="btn-edit">Editar</button>
             </mat-card-actions>
         </mat-card>

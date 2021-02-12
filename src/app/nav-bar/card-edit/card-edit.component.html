@@ -11,6 +11,14 @@
             <label for="description">Descrição</label>
             <textarea id="description" placeholder="Ex: Estudar bem os fundamentos e seguir em..." autocomplete="off" formControlName="description"></textarea>
         </div>
+        <div>
+            <div class="lblStatus">Status</div>
+            <select name="status" formControlName="status" class="select">
+                <option value="TODO" selected>TO DO</option>
+                <option value="DOING">DOING</option>
+                <option value="DONE">DONE</option>
+            </select>
+        </div>
     </form>
     <button mat-raised-button type="button" (click)="cardModal.close()" color="warn">Fechar</button>
     <button mat-raised-button type="submit" (click)="onSubmit()" class="btn-save" [disabled]="!editForm.valid">Salvar</button>

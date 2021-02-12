@@ -11,6 +11,7 @@ import { DoingModule } from './doing/doing.module';
 import { DoneModule } from './done/done.module';
 import { NavBarModule } from './nav-bar/nav-bar.module';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     DoneModule,
     NavBarModule,
     NgxSmartModalModule.forChild(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

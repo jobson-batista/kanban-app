@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from '../model/card';
 import { DoingService } from './doing.service';
 
 @Component({
@@ -8,12 +9,24 @@ import { DoingService } from './doing.service';
 })
 export class DoingComponent implements OnInit {
 
-  doing: any[];
+  doing: Card[];
 
   constructor(private doingService: DoingService) { }
 
   ngOnInit(): void {
-    this.doing = this.doingService.getDoing();
+    this.getCardsDoing();
+  }
+
+  getCardsDoing() {
+    this.doingService.getDoing().subscribe( doingList => {
+      this.doing = doingList as Card[];
+    } );
+  }
+
+  removeCard(card: Card) {
+    this.doingService.deleteDoing(card).subscribe( doing => {
+      this.getCardsDoing();
+    })
   }
 
 }

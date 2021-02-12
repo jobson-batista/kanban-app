@@ -2,28 +2,24 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Card } from '../model/card.js';
+import { Card } from 'src/app/model/card';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DoneService {
+export class CardEditService {
 
-  url = 'http://localhost:8080/card';
+  url = "http://localhost:8080/card";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  getDones(): Observable<Card[]>{
-    return this.httpClient.get<Card[]>(this.url+"/done")
-      .pipe(catchError(this.handleError))
-  }
-
-  deleteDone(card: Card) {
-    return this.httpClient.delete<Card[]>(this.url +"/"+ card.id, this.httpOptions)
+  saveCard(card: Card): Observable<Card>{   
+    return this.httpClient.post<Card>(this.url, card, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
