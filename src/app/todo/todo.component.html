@@ -12,8 +12,36 @@
             </mat-card-content>
             <mat-card-actions>
                 <button mat-raised-button (click)="removeTodo(todo)" color="warn">Excluir</button>
-                <button mat-raised-button class="btn-edit">Editar</button>
+                <button mat-raised-button class="btn-edit" (click)="edit(todo)">Editar</button>
             </mat-card-actions>
         </mat-card>
     </div>
 </div>
+
+<app-card-edit></app-card-edit>
+
+<!-- Modal -->
+
+<ngx-smart-modal #cardEditModal identifier="cardEditModal">
+    <div class="title">Atualizar Card</div>
+    <form class="mini-container" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="title">Título</label>
+            <input type="text" id="title" placeholder="Ex: Iniciar estudos em Java" autocomplete="off" formControlName="title" />
+        </div>
+        <div>
+            <label for="description">Descrição</label>
+            <textarea id="description" placeholder="Ex: Estudar bem os fundamentos e seguir em..." autocomplete="off" formControlName="description"></textarea>
+        </div>
+        <div>
+            <div class="lblStatus">Status</div>
+            <select name="status" formControlName="status" class="select">
+                <option value="TODO" selected>TO DO</option>
+                <option value="DOING">DOING</option>
+                <option value="DONE">DONE</option>
+            </select>
+        </div>
+    </form>
+    <button mat-raised-button type="button" (click)="cardEditModal.close()" color="warn">Fechar</button>
+    <button mat-raised-button type="submit" (click)="onSubmit()" class="btn-save" [disabled]="!editForm.valid">Salvar</button>
+</ngx-smart-modal>

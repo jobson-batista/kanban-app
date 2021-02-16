@@ -9,7 +9,7 @@ import { Card } from '../model/card.js';
 })
 export class TodoService {
 
-  url = 'http://localhost:8080/card';
+  url = 'https://kanban-app-backend.herokuapp.com/card';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,6 +24,11 @@ export class TodoService {
 
   deleteTodo(card: Card) {
     return this.httpClient.delete(this.url + "/" +card.id)
+      .pipe(catchError(this.handleError));
+  }
+
+  updateCard(card: Card): Observable<Card> {    
+    return this.httpClient.put<Card>(this.url + "/" + card.id, JSON.stringify(card), this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

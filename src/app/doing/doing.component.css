@@ -19,3 +19,40 @@
     background-color: #0089D7;
     color: white;
 }
+
+.title {
+    font-size: 200%;
+}
+
+.btn-save {
+    background-color: #0089D7;
+    color: white;
+    margin-left: 2%;
+}
+
+input {
+    width: 100%;
+    padding: 3%;
+    margin: 2% 0;
+    box-sizing: border-box;
+    border: 2px solid #0089D7;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    margin: 2% 0;
+    box-sizing: border-box;
+    height: 8em;
+    border: 2px solid #0089D7;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+.mini-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}

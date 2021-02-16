@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { cards } from '../data/cards.data.js';
 import { Card } from '../model/card.js';
 
 @Injectable({
@@ -10,7 +9,7 @@ import { Card } from '../model/card.js';
 })
 export class DoingService {
 
-  url = 'http://localhost:8080/card/';
+  url = 'https://kanban-app-backend.herokuapp.com/card';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,6 +24,11 @@ export class DoingService {
 
   deleteDoing(card: Card) {
     return this.httpClient.delete(this.url + card.id)
+      .pipe(catchError(this.handleError));
+  }
+
+  updateCard(card: Card): Observable<Card> {    
+    return this.httpClient.put<Card>(this.url + "/" + card.id, JSON.stringify(card), this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

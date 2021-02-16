@@ -4,6 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 import { DoingComponent } from './doing.component';
 import { DoingService } from './doing.service';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +13,11 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxSmartModalModule.forChild(),
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   exports: [
     DoingComponent

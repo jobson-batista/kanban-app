@@ -17,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
-    NavBarComponent
+    NavBarComponent,
+    CardEditComponent
   ]
 })
 export class NavBarModule { }

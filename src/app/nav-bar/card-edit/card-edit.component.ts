@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CardEditService } from './card-edit.service';
@@ -17,22 +17,31 @@ export class CardEditComponent implements OnInit {
     status: new FormControl('TODO')
   });
 
-  isEdit: boolean = false;
-  card = {} as Card;
+  @Input() isEdit: boolean;
+  @Input() card: Card;
 
   constructor(
     public ngxSmartModalService: NgxSmartModalService,
     public cardService: CardEditService) { }
 
   ngOnInit(): void {
-  }
-
-  createOrUpdate(){
-    return !this.isEdit ? "Criar Card" : "Atualizar Card";
+    if(this.isEdit) {
+      this.ngxSmartModalService.getModal("cardModal").open();
+    }
   }
   
   onClose() {
     this.editForm.patchValue({title:"",description:"",status:"TODO"});
+  }
+
+  onOpen() {
+    if(this.isEdit) {
+      this.editForm.setValue({
+        title: this.card.title,
+        description: this.card.description,
+        status: this.card.status
+      });
+    }
   }
 
   onSubmit() {
@@ -40,6 +49,7 @@ export class CardEditComponent implements OnInit {
     this.cardService.saveCard(this.card).subscribe(()=>{    
       this.clearForm();
       location.reload();
+      this.isEdit = false;
     });
     this.ngxSmartModalService.close("cardModal");
   }
@@ -47,4 +57,9 @@ export class CardEditComponent implements OnInit {
   clearForm(){
     this.editForm.patchValue({title:"",description:"",status:"TODO"});
   }
+
+  createOrUpdate() {
+    return !this.isEdit ? "Criar Card" : "Atualizar Card";
+  }
+  
 }

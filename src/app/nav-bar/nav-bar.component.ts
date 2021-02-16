@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
@@ -7,6 +7,8 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+
+  @Output() isEdit: boolean = false;
 
   constructor(public modalService: NgxSmartModalService) { }
 
